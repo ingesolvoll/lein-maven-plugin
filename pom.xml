@@ -25,13 +25,18 @@
         <maven.version>3.3.9</maven.version>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>clojars</id>
+            <name>Clojars repository</name>
+            <url>https://clojars.org/repo</url>
+        </repository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <id>clojars</id>
             <url>https://clojars.org/repo/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
             <releases>
                 <enabled>true</enabled>
             </releases>
