@@ -33,8 +33,6 @@ The plugin only has one goal, `run`. Its configuration, `<command>`, is the lein
 ## Limitations
 
 The plugin implementation is simplistic for now, so there are some limitations. Those are:
-* Command and arguments must be separated with 1 space between them. That's because the plugin does a simple
-string split on whitespace to parse the arguments.
 * No `do`. You can only use single lein plugins with args, like in the example. 
 * No `clean`. You need to configure maven to do that.
 
