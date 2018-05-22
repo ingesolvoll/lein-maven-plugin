@@ -2,10 +2,19 @@
   (:require [leiningen.core.main :as lein])
   (:import (org.apache.maven.plugin MojoExecutionException)))
 
-(defn main [command]
-      (let [args (re-seq #"\w+" command)]
+(defn exit
+  ([exit-code & msg]
+   (when-not (= exit-code 0)
+     (throw (ex-info (if (seq msg)
+                       (apply print-str msg)
+                       "Suppressed exit")
+                     {:exit-code exit-code :suppress-msg (empty? msg)}))))
+  ([] (exit 0)))
 
-           (when (-> args first (= "clean"))
-                 (throw (MojoExecutionException. "This plugin cannot be used for cleaning project. Configure maven to do that.")))
-           (with-redefs [lein/exit (constantly nil)]
-                        (apply lein/-main args))))
+(defn main [command]
+  (let [args (re-seq #"\w+" command)]
+
+    (when (-> args first (= "clean"))
+      (throw (MojoExecutionException. "This plugin cannot be used for cleaning project. Configure maven to do that.")))
+    (with-redefs [lein/exit exit]
+      (apply lein/-main args))))
