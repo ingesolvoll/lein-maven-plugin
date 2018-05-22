@@ -12,7 +12,7 @@
   ([] (exit 0)))
 
 (defn main [command]
-  (let [args (re-seq #"\w+" command)]
+  (let [args (re-seq #"[^\s]+" command)]
 
     (when (-> args first (= "clean"))
       (throw (MojoExecutionException. "This plugin cannot be used for cleaning project. Configure maven to do that.")))
