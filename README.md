@@ -13,7 +13,7 @@ The plugin only has one goal, `run`. Its configuration, `<command>`, is the lein
         <plugin>
             <groupId>ingesolvoll</groupId>
             <artifactId>lein-maven-plugin</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         
             <executions>
                 <execution>
