@@ -10,8 +10,6 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import java.util.Arrays;
-
 /**
  * Executes leiningen
  */
@@ -22,13 +20,12 @@ public class RunMojo extends AbstractMojo {
     private String command;
 
     public void execute() throws MojoExecutionException {
-        Clojure.var("clojure.core", "require").invoke(Symbol.intern("ingesolvoll.main"));
-        IFn lein = Clojure.var("ingesolvoll.main", "main");
+        Clojure.var("clojure.core", "require").invoke(Symbol.intern("ingesolvoll.lein-maven-plugin"));
+        IFn lein = Clojure.var("ingesolvoll.lein-maven-plugin", "main");
 
         if (command == null) {
             throw new MojoExecutionException("No command to run for leiningen.");
         }
-        Seq argsSeq = new Seq(Arrays.asList(command.split(" ")));
-        lein.applyTo(argsSeq);
+        lein.invoke(command);
     }
 }
