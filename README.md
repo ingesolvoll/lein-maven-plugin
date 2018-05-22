@@ -35,6 +35,7 @@ The plugin only has one goal, `run`. Its configuration, `<command>`, is the lein
 The plugin implementation is simplistic for now, so there are some limitations. Those are:
 * No `do`. You can only use single lein plugins with args, like in the example. 
 * No `clean`. You need to configure maven to do that.
+* Very little error handling, maven build may succeed even if lein builds fail.
 
 Upcoming versions will hopefully remove these limitations.
 
