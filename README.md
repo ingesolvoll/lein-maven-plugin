@@ -1,6 +1,8 @@
 # lein-maven-plugin
 Execute leiningen tasks from within maven. Uses leiningen as a library, no custom downloads.
 
+[![Clojars Project](https://img.shields.io/clojars/v/ingesolvoll/lein-maven-plugin.svg)](https://clojars.org/ingesolvoll/lein-maven-plugin)
+
 ## Usage
 
 The plugin only has one goal, `run`. Its configuration, `<command>`, is the leiningen command line arguments.
