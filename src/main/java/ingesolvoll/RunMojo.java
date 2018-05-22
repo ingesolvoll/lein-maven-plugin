@@ -22,8 +22,9 @@ public class RunMojo extends AbstractMojo {
     private String command;
 
     public void execute() throws MojoExecutionException {
-        Clojure.var("clojure.core", "require").invoke(Symbol.intern("leiningen.core.main"));
-        IFn lein = Clojure.var("leiningen.core.main", "-main");
+        Clojure.var("clojure.core", "require").invoke(Symbol.intern("ingesolvoll.main"));
+        IFn lein = Clojure.var("ingesolvoll.main", "main");
+
         if (command == null) {
             throw new MojoExecutionException("No command to run for leiningen.");
         }
