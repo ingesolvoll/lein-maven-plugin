@@ -16,5 +16,6 @@
 
     (when (-> args first (= "clean"))
       (throw (MojoExecutionException. "This plugin cannot be used for cleaning project. Configure maven to do that.")))
+    (alter-var-root #'lein/*exit-process?* (constantly false))
     (with-redefs [lein/exit exit]
       (apply lein/-main args))))
